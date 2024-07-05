@@ -1,11 +1,15 @@
 #include <math.h>
 #include <stdio.h>
+#include <string.h>
+#include <unistd.h>
 
 float A,B,C;
 
 float cubeWidth = 10;
 int width = 160, height = 44;
-float zBuffer(160+44);
+float zBuffer(160 * 44);
+char buffer[160 * 44];
+int backgroundASCIICode = '';
 
 float calculate(int i, int j, int k){
     return j *sin(A)*sin(B)*cos(C)-k*cos(A)*sin(B)*cos(C)+j*cos(A)*sin(C)+
@@ -26,7 +30,8 @@ float calculateZ(int i, int j, int k) {
 int main() { 
     printf("\x1b[2J");
     while(1){
-
+        memset(buffer, backgroundASCIICode, width*height);
+        memset(zBuffer, 0 , width*height*4);
     }    
     return 0;  
 }
